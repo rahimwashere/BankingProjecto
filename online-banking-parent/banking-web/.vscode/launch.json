@@ -1,0 +1,16 @@
+// Use IntelliSense to learn about possible attributes.
+// Hover to view descriptions of existing attributes.
+// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome 127.0.0.1",
+      "type": "chrome",
+      "request": "launch",
+      "port": 9227,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://127.0.0.1:49496/p/banking-web/src/main/resources/templates/customer/managePayee.html?_cmAuth\u003dhvowfyvqya"
+    }
+  ]
+}

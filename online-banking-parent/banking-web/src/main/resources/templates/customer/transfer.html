@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Create New Product</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+	type="text/javascript"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	type="text/javascript"></script>
+</head>
+<body>
+	 
+	<a th:href="@{/customer/logout}">
+		<button type="button" class="btn btn-warning">Logout</button>
+	</a>
+	<a th:href="@{/customer/dashboard}">
+		<button type="button" class="btn btn-warning">Dashboard</button>
+	</a>
+	<a th:href="@{/customer/transfer}">
+		<button type="button" class="btn btn-warning">Transfer</button>
+	</a>
+	<div class="container">
+		<h2>Transfer Funds</h2>
+		<img th:src="@{/images/security_questions.png}" alt="Logo"
+			style="height: 140px" src=""> <br /> <span th:utext="${error}"
+			style="color: red; font-size: 18px; font-weight: bold;"></span> <span
+			th:utext="${message}"
+			style="color: blue; font-size: 18px; font-weight: bold;"></span>
+		<div style="width: 70%">
+			<form th:action="@{/customer/saveTransaction}" method="POST">
+				<div class="form-group">
+					<label><b>Payee: </b></label> <select class="form-control"
+						name="credit_account_number">
+						<option th:each="payeeInfoVO:${payeeInfoVOs}"
+							th:value="${payeeInfoVO.payeeAccountNo}"
+							th:text="${payeeInfoVO.payeeName}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label><b>Amount To Transfer</b></label> <input type="text"
+						class="form-control" name="amount">
+				</div>
+				<div class="form-group">
+					<label><b>Remark</b></label> <input type="text"
+						class="form-control" name="remark">
+				</div>
+				<button type="submit" class="btn btn-primary">Transfer</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<head>
+  <title>Add Payee</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+  <style>
+.ffooter {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+  height: 30px;
+  background-color:#e9ffe7;
+}
+</style>
+
+</head>
+
+<header style="height: 30px;background-color: maroon;color:white;">
+  Hello Mr. <span th:utext="${session.userSessionVO.username}" th:unless="${session == null}" style="font-weight: bold;"></span>
+
+ <a th:href="@{/customer/logout}"> 
+<button type="button" class="btn btn-warning">Logout</button>
+</a>
+<a th:href="@{/customer/addPayee}">
+<button type="button" class="btn btn-warning">Add Payee/Beneficiary</button>
+</a>
+<a th:href="@{/customer/myProfile}"> 
+<button type="button" class="btn btn-warning">myProfile</button>
+</a>
+<a th:href="@{/customer/transfer}"> 
+<button type="button" class="btn btn-warning">Transfer</button>
+</a>
+</header>
+
+
+<body>
+
+
+<div class="container">
+  <h2>Add Payee
+  </h2>
+  <img th:src="@{/images/security_questions.png}" alt="Logo" style="height: 140px"/>
+   <br/>
+   
+   <span th:utext="${error}" style="color: red;font-size: 18px;font-weight: bold;"></span>
+      
+      <span th:utext="${message}" style="color: blue;font-size: 18px;font-weight: bold;"></span>
+      
+  <div style="width: 70%">
+   
+   <form th:action="@{/customer/savePayee}" method="POST">
+    <div class="form-group">
+      <label for="cp"><b>Payee Account Number:</b></label>
+        <input type="text"  class="form-control"   name="payeeAccountNo">
+    </div>
+  <div class="form-group">
+      <label for="np"><b>Payee Name</b></label>
+        <input type="text"  class="form-control"   name="payeeName">
+    </div>
+    
+      <div class="form-group">
+      <label for="np"><b>PayeeNick Name </b></label>
+        <input type="text"  class="form-control"   name="payeeNickName">
+    </div>
+    <div class="form-group">
+      <label for="np"><b>Remarks  </b></label>
+        <input type="text"  class="form-control"   name="remarks">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Payee</button>
+    
+  
+  </form>
+  </div>
+</div>
+<footer  class="ffooter">
+</footer>
+
+</body>
+</html>
